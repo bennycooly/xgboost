@@ -73,6 +73,10 @@ CFLAGS += -I$(DMLC_CORE)/include -I$(RABIT)/include -I$(GTEST_PATH)/include
 #java include path
 export JAVAINCFLAGS = -I${JAVA_HOME}/include -I./java
 
+# Ekstazi flags
+CFLAGS += -flto
+LDFLAGS += -flto -fuse-ld=gold -Wl,-plugin-opt=save-temps
+
 ifeq ($(TEST_COVER), 1)
 	CFLAGS += -g -O0 -fprofile-arcs -ftest-coverage
 else
